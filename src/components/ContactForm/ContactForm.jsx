@@ -8,8 +8,8 @@ export default function ContactForm({ init, valid }) {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    actions.resetForm();
     dispatch(addContact(values));
+    actions.resetForm();
   };
 
   const nameFieldId = useId();

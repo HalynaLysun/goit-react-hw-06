@@ -31,20 +31,21 @@ const contactsSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare(name, number) {
+      prepare(contact) {
         return {
           payload: {
             id: nanoid(),
-            name,
-            number,
+            ...contact,
           },
         };
       },
     },
     deleteContact: {
       reducer(state, action) {
-        const id = state.filter((contact) => contact.id === action.payload);
-        state.splice(id, 1);
+        const index = state.findIndex(
+          (contact) => contact.id === action.payload
+        );
+        state.splice(index, 1);
       },
     },
   },

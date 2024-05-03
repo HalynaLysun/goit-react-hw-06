@@ -6,6 +6,7 @@ import { deleteContact } from "../../redux/contactsSlice";
 
 export default function Contact({ id, name, number }) {
   const dispatch = useDispatch();
+
   const handleDelete = () => dispatch(deleteContact(id));
   return (
     <div className={css.wrapper}>
