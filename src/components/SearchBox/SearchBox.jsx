@@ -8,6 +8,11 @@ export default function SearchBox() {
   };
   console.log(inputValue);
 
+  //   const arrContacts = contactData.filter((el) => {
+  //     const contactName = el.name.toLowerCase();
+  //     return contactName.includes(inputValue.toLowerCase());
+  //   });
+
   return (
     <>
       <p>Find contacts by name</p>

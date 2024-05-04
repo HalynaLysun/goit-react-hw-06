@@ -11,11 +11,12 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import SetTransform from "./contactsSlice";
 
 const contactPersistConfig = {
   key: "contacts",
   storage,
-  whitelist: ["id", "name", "number"],
+  transforms: [SetTransform],
 };
 
 const pContactReducer = persistReducer(contactPersistConfig, contactsReducer);
