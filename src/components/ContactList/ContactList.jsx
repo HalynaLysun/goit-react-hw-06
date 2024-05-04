@@ -3,8 +3,8 @@ import css from "./ContactList.module.css";
 import { useSelector } from "react-redux";
 
 export default function ContactList() {
-  const contacts = useSelector((state) => state.contacts);
-  console.log(contacts);
+  const obj = useSelector((state) => state.contacts);
+  const contacts = obj.items;
   return (
     <ul className={css.list}>
       {contacts.map((contact) => (
