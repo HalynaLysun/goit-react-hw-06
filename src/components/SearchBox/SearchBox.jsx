@@ -1,22 +1,19 @@
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { changeFilter } from "../../redux/filtersSlice";
 
 export default function SearchBox() {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleChange = (evt) => {
-    setInputValue(evt.target.value);
-  };
+  const dispatch = useDispatch();
+  const inputValue = useSelector((state) => state.filters);
   console.log(inputValue);
-
-  //   const arrContacts = contactData.filter((el) => {
-  //     const contactName = el.name.toLowerCase();
-  //     return contactName.includes(inputValue.toLowerCase());
-  //   });
 
   return (
     <>
       <p>Find contacts by name</p>
-      <input type="text" value={inputValue} onChange={handleChange} />
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(evt) => dispatch(changeFilter(evt.target.value))}
+      />
     </>
   );
 }

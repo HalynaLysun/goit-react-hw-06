@@ -1,5 +1,4 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-// import { createTransform } from "redux-persist";
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -30,15 +29,6 @@ const contactsSlice = createSlice({
     },
   },
 });
-
-// const SetTransform = createTransform(
-//   (outboundState, key) => {
-//     return { ...outboundState, mySet: new Set(outboundState.mySet) };
-//   },
-//   { whitelist: ["contactsReducer"] }
-// );
-
-// export default SetTransform;
 
 export const contactsReducer = contactsSlice.reducer;
 export const { addContact, deleteContact } = contactsSlice.actions;
