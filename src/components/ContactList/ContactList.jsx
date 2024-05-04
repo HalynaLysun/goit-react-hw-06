@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function ContactList() {
   const contacts = useSelector((state) => state.contacts);
+  console.log(contacts);
   return (
     <ul className={css.list}>
       {contacts.map((contact) => (

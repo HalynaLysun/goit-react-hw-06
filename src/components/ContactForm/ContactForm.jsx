@@ -3,8 +3,9 @@ import { useId } from "react";
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contactsSlice";
+import * as Yup from "yup";
 
-export default function ContactForm({ init, valid }) {
+export default function ContactForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
@@ -15,11 +16,27 @@ export default function ContactForm({ init, valid }) {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
+  const FeedbackSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(3, "Too short")
+      .max(50, "Too long")
+      .required("Required"),
+    number: Yup.string()
+      .min(3, "Too short")
+      .max(50, "Too long")
+      .required("Required"),
+  });
+
+  const initialValues = {
+    name: "",
+    number: "",
+  };
+
   return (
     <Formik
-      initialValues={init}
+      initialValues={initialValues}
       onSubmit={handleSubmit}
-      validationSchema={valid}
+      validationSchema={FeedbackSchema}
     >
       <Form className={css.form}>
         <div>
